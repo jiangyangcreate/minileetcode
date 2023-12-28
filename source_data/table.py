@@ -1,30 +1,5 @@
-import sqlite3
 import re
-
-# 连接到数据库（如果不存在，则会创建）
-conn = sqlite3.connect("minileetcode.db")
-
-# 创建一个游标对象，用于执行SQL语句
-cursor = conn.cursor()
-
-# 创建problems表
-cursor.execute(
-    """
-    CREATE TABLE IF NOT EXISTS problems (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        title TEXT,
-        description TEXT,
-        python_code TEXT,
-        level TEXT
-    )
-"""
-)
-
-# 提交更改
-conn.commit()
-
-# 关闭连接
-conn.close()
+import json
 
 
 def parse_input_text(input_text):
@@ -50,9 +25,8 @@ def parse_input_text(input_text):
     return parsed_data
 
 
-# 连接到数据库
-conn = sqlite3.connect("minileetcode.db")
-cursor = conn.cursor()
+# 创建一个空数组，用于存储问题数据
+problems_data = []
 
 for files in ["minileetcode_easy.md", "minileetcode_medium.md"]:
     level = files.split("_")[1].split(".")[0]
@@ -60,17 +34,15 @@ for files in ["minileetcode_easy.md", "minileetcode_medium.md"]:
         input_text = f.read()
 
     for i in parse_input_text(input_text):
-        # 插入数据
-        cursor.execute(
-            """
-            INSERT INTO problems (title, description, python_code,level)
-            VALUES (?, ?, ?, ?)
-        """,
-            (i["标题"], i["描述"], i["python_code"], level),
-        )
+        # 构建数据对象并追加到数组
+        data = {
+            "title": i["标题"],
+            "description": i["描述"],
+            "python_code": i["python_code"],
+            "level": level,
+        }
+        problems_data.append(data)
 
-# 提交更改
-conn.commit()
-
-# 关闭连接
-conn.close()
+# 将整个数组写入 JSON 文件
+with open("../data_file.json", "w", encoding="utf-8") as write:
+    json.dump(problems_data, write, ensure_ascii=False, indent=2)
