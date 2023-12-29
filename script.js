@@ -10,14 +10,20 @@ const officeCheckbox = getElement("office");
 const contentContainer = getElement("content-container");
 const hideSolutionBtn = getElement("hide-solution");
 const showSolutionBtn = getElement("show-solution");
-const nextProblemBtn = getElement("next-problem");
+const changeProblemBtn = getElement("change-problem");
+const prevProblemBtn = getElement("prev-problem"); // Add this line
+const nextProblemBtn = getElement("next-problem"); // Add this line
+
+let currentProblemIndex = 0; // Add this line
 
 // 隐藏和展示按钮的事件监听器
 hideSolutionBtn.addEventListener("click", toggleSolutionVisibility);
 showSolutionBtn.addEventListener("click", toggleSolutionVisibility);
 
 // 再来一题按钮的点击事件监听器
-nextProblemBtn.addEventListener("click", loadNextProblem);
+changeProblemBtn.addEventListener("click", loadChangeProblem);
+prevProblemBtn.addEventListener("click", loadPrevProblem); // Add this line
+nextProblemBtn.addEventListener("click", loadNextProblem); // Add this line
 
 // 初始化页面
 fetchDataAndHandle();
@@ -75,9 +81,21 @@ function getRandomProblem(data) {
         : data[Math.floor(Math.random() * data.length)];
 }
 
+// 加载随机问题
+function loadChangeProblem() {
+    fetchDataAndHandle();
+}
+
+// 加载上一个问题
+function loadPrevProblem() {
+    currentProblemIndex = (currentProblemIndex - 1 + data.length) % data.length;
+    updatePageWithRandomData(data[currentProblemIndex]);
+}
+
 // 加载下一个问题
 function loadNextProblem() {
-    fetchDataAndHandle();
+    currentProblemIndex = (currentProblemIndex + 1) % data.length;
+    updatePageWithRandomData(data[currentProblemIndex]);
 }
 
 // 使用 Fetch API 动态加载 JSON 文件并处理数据

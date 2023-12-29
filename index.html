@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css"> <!-- 导入 CSS 文件 -->
+    <link rel="stylesheet" href="style.css">
     <title>Random Content</title>
 </head>
+
 <body>
     <div class="welcome-message">欢迎来到 <span style="font-weight: bold;">mini-leetcode</span></div>
+
     <div class="options-container">
         <fieldset>
             <legend>题型选择</legend>
-            
+
             <label for="easy">
                 <input type="checkbox" id="easy" name="difficulty" value="easy" checked>
                 easy
             </label>
-            
+
             <label for="medium">
                 <input type="checkbox" id="medium" name="difficulty" value="medium">
                 medium
@@ -26,15 +29,33 @@
                 <input type="checkbox" id="office" name="difficulty" value="medium">
                 office
             </label>
-            <!-- 新增按钮 -->
-            <button id="next-problem">换一题</button>
+        </fieldset>
+
+        <fieldset>
+            <legend>
+                <span id="current-problem">第<span id="current-problem-number">1</span>题</span>
+                <span id="total-problems">共<span id="total-problems-number">0</span>题</span>
+            </legend>
+            
+            <button id="change-problem">换一题</button>
+            <button id="prev-problem">上一题</button>
+            <button id="next-problem">下一题</button>
+
+            <label for="jump-to-problem">跳转到第
+                <input type="number" id="jump-to-problem" min="1" max="99" placeholder="1">题
+            </label>
+            <button id="jump-btn">跳转</button>
         </fieldset>
     </div>
+
     <div id="content-container"></div>
+
     <footer>
         <button id="hide-solution">隐藏题解</button>
         <button id="show-solution">展示题解</button>
     </footer>
-<script src="script.js"></script>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
