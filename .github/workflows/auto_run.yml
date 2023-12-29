@@ -1,0 +1,25 @@
+name: Auto Run Get Source Script
+
+on:
+  push:
+    branches:
+      - main  # 请根据你的主分支名称进行调整
+
+jobs:
+  run_get_source:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Run get_source.js
+      run: node get_source.js

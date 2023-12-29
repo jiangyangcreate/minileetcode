@@ -1,4 +1,3 @@
-
 # Mini LeetCode 项目
 
 这是一个精简版的 LeetCode 刷题项目，旨在帮助你学习和练习算法问题。每次刷新都会随机出现一道题目。
@@ -15,6 +14,17 @@
 ## 作者
 
 - jiangyang
+
+## 自用
+
+1. Fork本项目，按source_data中md文件的格式进行修改
+
+> git action 会自动执行`get_source.js` , 将md文件转换为json文件
+> 本地使用请手动执行`node get_source.js`，将md文件转换为json文件。推荐VsCode插件`Code Runner`
+
+2. 修改`script.js`中的`apiUrl = 'https://raw.githubusercontent.com/jiangyangcreate/minileetcode/main/data_file.json';`为自己的json文件地址
+
+> 示例：`'https://raw.githubusercontent.com/用户名/项目名/main/文件地址'`
 
 ## 许可证
 
