@@ -2,12 +2,11 @@ function handleJsonData(data) {
     // 随机选择一个问题
     const randomProblem = data[Math.floor(Math.random() * data.length)];
 
-
     // 在这里可以进一步处理返回的数据，例如更新页面上的内容
     updatePageWithRandomData(randomProblem);
 }
-// 更新页面上的内容，显示标题、描述和 Python 代码
 
+// 更新页面上的内容，显示标题、描述和 Python 代码
 function updatePageWithRandomData(randomProblem) {
     const contentContainer = document.getElementById("content-container");
 
@@ -15,18 +14,22 @@ function updatePageWithRandomData(randomProblem) {
     const htmlContent = `
         <div class="container">
             <div class="left-div">
-                <h2>${randomProblem.title}</h2>
+                <div class="pre-container">
+                    <h2>${randomProblem.title}</h2>
 
-                <p>难度：${randomProblem.level}<p>
+                    <p>难度：${randomProblem.level}<p>
 
-                <h3>描述</h3>
+                    <h3>描述</h3>
 
-                <p class="description"><pre>${randomProblem.description}</pre></p>
+                    <pre>${randomProblem.description}</pre>
+                </div>
             </div>
 
             <div class="right-div">
                 <h3>题解</h3>
-                <pre id="codeBlock" class="collapsed"><code>${randomProblem.python_code}</code></pre>
+                <div class="pre-container hidden" id="solution-content">
+                    <pre id="codeBlock" class="collapsed">${randomProblem.python_code}</pre>
+                </div>
             </div>
         </div>
     `;
@@ -34,12 +37,19 @@ function updatePageWithRandomData(randomProblem) {
     // 将 HTML 字符串设置为内容
     contentContainer.innerHTML = htmlContent;
 
-    // 添加点击事件，切换代码块的显示和隐藏状态
-    const toggleCodeButton = document.getElementById("toggleCodeButton");
-    const codeBlock = document.getElementById("codeBlock");
+    // 获取隐藏和展示按钮
+    const hideSolutionBtn = document.getElementById("hide-solution");
+    const showSolutionBtn = document.getElementById("show-solution");
 
-    toggleCodeButton.addEventListener("click", () => {
-        codeBlock.classList.toggle("collapsed");
+    // 添加事件监听器
+    hideSolutionBtn.addEventListener("click", function() {
+        const solutionContent = document.getElementById("solution-content");
+        solutionContent.classList.add("hidden");
+    });
+
+    showSolutionBtn.addEventListener("click", function() {
+        const solutionContent = document.getElementById("solution-content");
+        solutionContent.classList.remove("hidden");
     });
 }
 
