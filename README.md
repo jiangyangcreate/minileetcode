@@ -20,6 +20,7 @@
 1. Fork本项目，按source_data中md文件的格式进行修改
 
 > git action 会自动执行`get_source.js` , 将md文件转换为json文件
+
 > 本地使用请手动执行`node get_source.js`，将md文件转换为json文件。推荐VsCode插件`Code Runner`
 
 2. 修改`script.js`中的`apiUrl = 'https://raw.githubusercontent.com/jiangyangcreate/minileetcode/main/data_file.json';`为自己的json文件地址

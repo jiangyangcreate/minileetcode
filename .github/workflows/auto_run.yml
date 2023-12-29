@@ -3,7 +3,7 @@ name: Auto Run Get Source Script
 on:
   push:
     branches:
-      - main  # 请根据你的主分支名称进行调整
+      - main
 
 jobs:
   run_get_source:
@@ -23,3 +23,11 @@ jobs:
 
     - name: Run get_source.js
       run: node get_source.js
+
+    - name: Commit and Push Changes
+      run: |
+        git config --global user.email "github-actions@users.noreply.github.com"
+        git config --global user.name "GitHub Actions"
+        git add data_file.json
+        git commit -m "Update data_file.json" || true
+        git push

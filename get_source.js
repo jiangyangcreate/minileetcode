@@ -34,7 +34,7 @@ const files = fs.readdirSync(sourceDataDir).filter(file => file.endsWith('.md'))
 
 const problemsData = files.flatMap(fileName => readAndParseFile(path.join(sourceDataDir, fileName)));
 
-const outputPath = "data_file2.json";
+const outputPath = "data_file.json";
 
 fs.writeFileSync(outputPath, JSON.stringify(problemsData, null, 2), 'utf-8');
 
