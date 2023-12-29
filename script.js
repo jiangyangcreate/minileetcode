@@ -1,5 +1,8 @@
+// 获取元素的简便函数
 const getElement = (id) => document.getElementById(id);
-const ELEMENTS = {
+
+// 创建元素对象
+const createElements = () => ({
     easy: getElement("easy"),
     medium: getElement("medium"),
     office: getElement("office"),
@@ -13,20 +16,24 @@ const ELEMENTS = {
     jumpBtn: getElement("jump-btn"),
     currentProblemNumber: getElement("current-problem-number"),
     totalProblemsNumber: getElement("total-problems-number"),
-    solutionContent: getElement("solution-content"),
+});
+
+// 事件监听器的添加
+const addEventListeners = () => {
+    ELEMENTS.jumpBtn.addEventListener("click", () => jumpToProblem(data));
+    ELEMENTS.hideSolutionBtn.addEventListener("click", toggleSolutionVisibility);
+    ELEMENTS.showSolutionBtn.addEventListener("click", toggleSolutionVisibility);
+    ELEMENTS.changeProblemBtn.addEventListener("click", loadChangeProblem);
+    ELEMENTS.prevProblemBtn.addEventListener("click", () => loadPrevProblem(data));
+    ELEMENTS.nextProblemBtn.addEventListener("click", () => loadNextProblem(data));
 };
 
 const API_URL = 'https://raw.githubusercontent.com/jiangyangcreate/minileetcode/main/data_file.json';
 
 let currentProblemIndex = 0;
 let data;
-
-ELEMENTS.jumpBtn.addEventListener("click", () => jumpToProblem(data));
-ELEMENTS.hideSolutionBtn.addEventListener("click", toggleSolutionVisibility);
-ELEMENTS.showSolutionBtn.addEventListener("click", toggleSolutionVisibility);
-ELEMENTS.changeProblemBtn.addEventListener("click", loadChangeProblem);
-ELEMENTS.prevProblemBtn.addEventListener("click", () => loadPrevProblem(data));
-ELEMENTS.nextProblemBtn.addEventListener("click", () => loadNextProblem(data));
+const ELEMENTS = createElements();
+addEventListeners();
 
 async function fetchData(url) {
     const response = await fetch(url);
@@ -53,7 +60,7 @@ function handleJsonData(data) {
 
 function updatePageWithRandomData(randomProblem) {
     const { title, level, description, python_code } = randomProblem;
-    const { contentContainer, currentProblemNumber, totalProblemsNumber, solutionContent } = ELEMENTS;
+    const { contentContainer, currentProblemNumber, totalProblemsNumber } = ELEMENTS;
     const filteredData = filterProblemsByDifficulty(false);
 
     const htmlContent = `
@@ -84,7 +91,8 @@ function updatePageWithRandomData(randomProblem) {
 
 
 function toggleSolutionVisibility() {
-    ELEMENTS.solutionContent.classList.toggle("hidden");
+    const totalProblemsContainer = getElement("solution-content");
+    totalProblemsContainer.classList.toggle("hidden");
 }
 
 function filterProblemsByDifficulty(set_alert = true) {
