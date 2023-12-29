@@ -8,10 +8,13 @@ on:
 jobs:
   run_get_source:
     runs-on: ubuntu-latest
-
+    permissions:
+        contents: write
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0  # 拉取完整的提交历史
 
     - name: Install Node.js
       uses: actions/setup-node@v3
