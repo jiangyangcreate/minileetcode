@@ -4,6 +4,7 @@ const getElement = (id) => document.getElementById(id);
 // 获取选项的选择状态
 const easyCheckbox = getElement("easy");
 const mediumCheckbox = getElement("medium");
+const officeCheckbox = getElement("office");
 
 // 获取页面元素
 const contentContainer = getElement("content-container");
@@ -62,6 +63,8 @@ function getRandomProblem(data) {
         if (easyCheckbox.checked && problem.level === "easy") {
             return true;
         } else if (mediumCheckbox.checked && problem.level === "medium") {
+            return true;
+        } else if (officeCheckbox.checked && problem.level === "office") {
             return true;
         }
         return false;
