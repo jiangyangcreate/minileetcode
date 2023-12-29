@@ -1,0 +1,99 @@
+body {
+    background-color: rgb(128, 128, 128);
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+.hidden {
+    display: none;
+}
+.container {
+    display: flex;
+    min-height: 100vh;
+    /* flex-direction: column; */
+}
+.pre-container {
+    width: 100%;           /* 或者设置固定宽度，例如 width: 600px; */
+}
+.content {
+    flex: 1;
+    display: flex;
+}
+/* Webkit 内核浏览器的滚动条样式 */
+.left-div::-webkit-scrollbar,
+.right-div::-webkit-scrollbar {
+    width: 10px; /* 滚动条宽度 */
+}
+
+.left-div::-webkit-scrollbar-thumb,
+.right-div::-webkit-scrollbar-thumb {
+    background-color: #555; /* 滚动条 thumb 背景颜色 */
+    border-radius: 5px; /* 滚动条 thumb 圆角 */
+}
+
+.left-div::-webkit-scrollbar-track,
+.right-div::-webkit-scrollbar-track {
+    background-color: #ddd; /* 滚动条轨道背景颜色 */
+}
+.left-div, .right-div {
+    flex: 1;
+    padding: 20px;
+    border: 2px solid;
+    margin: 10px;
+    box-sizing: border-box;
+    overflow: hidden; /* 防止内容溢出 */
+    border-radius: 10px; /* 圆角边框 */
+    overflow-y: auto; /* 添加垂直滚动条 */
+    overflow-x: auto;      /* 添加水平滚动条 */
+    scrollbar-width: thin;
+    scrollbar-color: #555 #ddd;
+}
+
+.left-div {
+    background-color: rgb(255, 255, 255);
+    font-size: 16px;
+    color: #333;
+}
+
+.right-div {
+    background-color: rgb(255, 255, 255);
+    font-family: 'Times New Roman', serif;
+    font-size: 18px;
+    color: #000000;
+}
+
+.welcome-message {
+    background-color: #3498db;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    font-size: 24px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: sticky;
+    bottom: 0;
+}
+
+footer button {
+
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+/* Added styles for the checkbox */
+.options-container {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.options-container label {
+    margin-right: 10px;
+    color: #fff;
+}

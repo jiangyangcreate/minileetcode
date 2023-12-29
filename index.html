@@ -3,101 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            background-color: rgb(128, 128, 128);
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-        .hidden {
-            display: none;
-        }
-        .container {
-            display: flex;
-            min-height: 100vh;
-            /* flex-direction: column; */
-        }
-        .pre-container {
-            width: 100%;           /* 或者设置固定宽度，例如 width: 600px; */
-        }
-        .content {
-            flex: 1;
-            display: flex;
-        }
-        /* Webkit 内核浏览器的滚动条样式 */
-        .left-div::-webkit-scrollbar,
-        .right-div::-webkit-scrollbar {
-            width: 10px; /* 滚动条宽度 */
-        }
-
-        .left-div::-webkit-scrollbar-thumb,
-        .right-div::-webkit-scrollbar-thumb {
-            background-color: #555; /* 滚动条 thumb 背景颜色 */
-            border-radius: 5px; /* 滚动条 thumb 圆角 */
-        }
-
-        .left-div::-webkit-scrollbar-track,
-        .right-div::-webkit-scrollbar-track {
-            background-color: #ddd; /* 滚动条轨道背景颜色 */
-        }
-        .left-div, .right-div {
-            flex: 1;
-            padding: 20px;
-            border: 2px solid;
-            margin: 10px;
-            box-sizing: border-box;
-            overflow: hidden; /* 防止内容溢出 */
-            border-radius: 10px; /* 圆角边框 */
-            overflow-y: auto; /* 添加垂直滚动条 */
-            overflow-x: auto;      /* 添加水平滚动条 */
-            scrollbar-width: thin;
-            scrollbar-color: #555 #ddd;
-        }
-
-        .left-div {
-            background-color: rgb(255, 255, 255);
-            font-size: 16px;
-            color: #333;
-        }
-
-        .right-div {
-            background-color: rgb(255, 255, 255);
-            font-family: 'Times New Roman', serif;
-            font-size: 18px;
-            color: #000000;
-        }
-
-        .welcome-message {
-            background-color: #3498db;
-            color: #ffffff;
-            text-align: center;
-            padding: 20px;
-            font-size: 24px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-        }
-
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            position: sticky;
-            bottom: 0;
-        }
-
-        footer button {
-
-            margin: 0 10px;
-            text-decoration: none;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css"> <!-- 导入 CSS 文件 -->
     <title>Random Content</title>
 </head>
 <body>
     <div class="welcome-message">欢迎来到 <span style="font-weight: bold;">minileetcode</span></div>
-    <div id="content-container"></div>
+    <div class="options-container">
+        <fieldset>
+            <legend>难度选择</legend>
+            
+            <label for="easy">
+                <input type="checkbox" id="easy" name="difficulty" value="easy" checked>
+                easy
+            </label>
+            
+            <label for="medium">
+                <input type="checkbox" id="medium" name="difficulty" value="medium">
+                medium
+            </label>
     
+            <!-- 新增按钮 -->
+            <button id="next-problem">换一题</button>
+        </fieldset>
+    </div>
+    <div id="content-container"></div>
     <footer>
         <button id="hide-solution">隐藏题解</button>
         <button id="show-solution">展示题解</button>
