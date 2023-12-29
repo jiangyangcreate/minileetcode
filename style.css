@@ -1,69 +1,74 @@
 body {
-    background-color: rgb(128, 128, 128);
+    background-color: #f4f4f4;
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .hidden {
     display: none;
 }
+
 .container {
     display: flex;
     min-height: 100vh;
-    /* flex-direction: column; */
 }
+
 .pre-container {
-    width: 100%;           /* 或者设置固定宽度，例如 width: 600px; */
+    width: 100%;
 }
+
 .content {
     flex: 1;
     display: flex;
 }
+
 /* Webkit 内核浏览器的滚动条样式 */
 .left-div::-webkit-scrollbar,
 .right-div::-webkit-scrollbar {
-    width: 10px; /* 滚动条宽度 */
+    width: 8px;
 }
 
 .left-div::-webkit-scrollbar-thumb,
 .right-div::-webkit-scrollbar-thumb {
-    background-color: #555; /* 滚动条 thumb 背景颜色 */
-    border-radius: 5px; /* 滚动条 thumb 圆角 */
+    background-color: #555;
+    border-radius: 5px;
 }
 
 .left-div::-webkit-scrollbar-track,
 .right-div::-webkit-scrollbar-track {
-    background-color: #ddd; /* 滚动条轨道背景颜色 */
+    background-color: #eee;
 }
+
 .left-div, .right-div {
     flex: 1;
     padding: 20px;
-    border: 2px solid;
+    border: 2px solid #ddd;
     margin: 10px;
     box-sizing: border-box;
-    overflow: hidden; /* 防止内容溢出 */
-    border-radius: 10px; /* 圆角边框 */
-    overflow-y: auto; /* 添加垂直滚动条 */
-    overflow-x: auto;      /* 添加水平滚动条 */
+    overflow: hidden;
+    border-radius: 10px;
+    overflow-y: auto;
+    overflow-x: auto;
     scrollbar-width: thin;
-    scrollbar-color: #555 #ddd;
+    scrollbar-color: #555 #eee;
 }
 
 .left-div {
-    background-color: rgb(255, 255, 255);
-    font-size: 16px;
+    background-color: #fff;
+    font-size: 18px;
     color: #333;
 }
 
 .right-div {
-    background-color: rgb(255, 255, 255);
-    font-family: 'Times New Roman', serif;
-    font-size: 18px;
-    color: #000000;
+    background-color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    color: #444;
 }
 
 .welcome-message {
     background-color: #3498db;
-    color: #ffffff;
+    color: #fff;
     text-align: center;
     padding: 20px;
     font-size: 24px;
@@ -81,9 +86,12 @@ footer {
 }
 
 footer button {
-
     margin: 0 10px;
+    padding: 8px 16px;
     text-decoration: none;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
 }
 
 /* Added styles for the checkbox */
@@ -95,5 +103,16 @@ footer button {
 
 .options-container label {
     margin-right: 10px;
+    color: #555;
+    font-size: 16px;
+}
+
+#next-problem {
+    background-color: #4caf50;
     color: #fff;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
