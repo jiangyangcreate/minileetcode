@@ -47,13 +47,14 @@ async function init() {
 
 function handleJsonData(data) {
     const randomProblem = getRandomProblem(data);
+    currentProblemIndex = data.indexOf(randomProblem);
     updatePageWithRandomData(randomProblem);
 }
 
 function updatePageWithRandomData(randomProblem) {
     const { title, level, description, python_code } = randomProblem;
     const { contentContainer, currentProblemNumber, totalProblemsNumber, solutionContent } = ELEMENTS;
-    const filteredData = filterProblemsByDifficulty(set_alert = false);
+    const filteredData = filterProblemsByDifficulty(false);
 
     const htmlContent = `
         <div class="container">
@@ -76,9 +77,11 @@ function updatePageWithRandomData(randomProblem) {
     contentContainer.innerHTML = htmlContent;
 
     // 更新当前题号和总题数 
-    currentProblemNumber.textContent = filteredData.indexOf(randomProblem)+1;
+    const currentIndex = filteredData.indexOf(randomProblem) + 1;
+    currentProblemNumber.textContent = currentIndex;
     totalProblemsNumber.textContent = filteredData.length;
 }
+
 
 function toggleSolutionVisibility() {
     ELEMENTS.solutionContent.classList.toggle("hidden");
