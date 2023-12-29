@@ -2,14 +2,14 @@ name: Auto Run Get Source Script
 
 on:
   push:
-    branches:
-      - main
+    paths:
+      - 'source_data/**'  # 只有 source_data 目录下的文件发生更改时才执行
 
 jobs:
   run_get_source:
     runs-on: ubuntu-latest
     permissions:
-        contents: write
+      contents: write
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2

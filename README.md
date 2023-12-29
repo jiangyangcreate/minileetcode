@@ -1,7 +1,10 @@
 # Mini LeetCode 项目
 
-这是一个精简版的 LeetCode 刷题项目，旨在帮助你学习和练习算法问题。每次刷新都会随机出现一道题目。
+这是一个精简版的 LeetCode 刷题项目，旨在帮助你学习和练习算法问题。
 
+在线体验：https://jiangmiemie.com/minileetcode/
+
+![showcase](./showcase/showcase.png)
 
 ## 路线图
 
